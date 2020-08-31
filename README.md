@@ -5,6 +5,6 @@
 
 
 ## :closed_book:Google Analytics
-- 
+- 초보자용 
 
 
