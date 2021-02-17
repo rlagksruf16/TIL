@@ -21,7 +21,7 @@
 - **Greedy 활용 + 사이클 형성 X**
 - 닥치는대로 Greedy하게 간선을 포함시키면 무조건 사이클 형성이 되므로 간선이 포함되었는지 안 포함되었는지를 확인하는 **Union-Find 방법 활용**
 
-Union-find 알고리즘
+Union-find 개념 설명  
 
 ```java
 public static void union(int x, int y) { // 네트워크 형성
