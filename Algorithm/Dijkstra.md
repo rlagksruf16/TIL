@@ -36,4 +36,112 @@
 2. 힙(우선순위 큐)를 이용하는 경우
     - O(E log V)
 
-코드
+```cpp
+#include<iostream>
+#include<vector>
+#include<queue>
+#define INF 1e9
+using namespace std;
+ 
+int main() {
+    int V,E;
+    scanf("%d %d", &V ,&E); //노드의 갯수와 엣지의 갯수를 입력받습니다. 
+    int start;
+    scanf("%d",&start);        //시작점을 입력받습니다. 
+    vector<pair<int,int> > arr[V+1];
+    
+    for(int i=0;i<E;i++){
+        int from,to,val;
+        scanf("%d %d %d", &from , &to,&val); //그래프 상의 엣지들에 대한 정보를 입력받습니다. 
+        arr[from].push_back({to,val});
+    }
+    int dist[V+1];    //최단거리를 갱신해주는 배열입니다. 
+    fill(dist,dist+V+1,INF);    //먼저 무한대로 전부 초기화를 시켜둡니다. 
+    priority_queue<pair<int,int>> qu;     
+    
+    qu.push({0,start});    //우선순위 큐에 시작점을 넣어줍니다. 
+    dist[start]=0;    //시작점의 최단거리를 갱신합니다. 
+    
+    while(!qu.empty()){
+        int cost=-qu.top().first;    // cost는 다음 방문할 점의 dist값을 뜻합니다. 
+        int here=qu.top().second;     // here을 방문할 점의 번호를 뜻합니다 
+        
+        qu.pop();
+            
+        for(int i=0; i<arr[here].size(); i++){
+            int next=arr[here][i].first;
+            int nextcost=arr[here][i].second;
+            
+            if(dist[next] > dist[here] + nextcost){    
+                //현재 next에 저장된 dist의값보다 현재의 점을 거쳐서 갈 경우가 
+                // 거리가 더짧으면 갱신해 주고 큐에 넣습니다. 
+                dist[next]=dist[here]+nextcost;
+                qu.push({-dist[next],next});
+            }
+        }
+        
+    }
+    for(int i=1;i<=V;i++){
+        printf("%d\n", dist[i]);
+    }
+```
+
+### 1753 - 최단경로
+
+[1753번: 최단경로](https://www.acmicpc.net/problem/1753)
+
+```cpp
+#include <string>
+#include <vector>
+#include <queue>
+#include<iostream>
+#include<cstdio>
+#include<algorithm>
+using namespace std;
+int V, E, K, from, to, w;
+vector<pair<int, int> > v[20001];
+priority_queue<pair<int, int> > pq;
+bool visited[20001];
+int dis[20001];
+int INF = 1000000;
+
+void dijkstra() {
+	dis[K] = 0;
+	pq.push(make_pair(0, K));
+
+	while (!pq.empty()) {
+		int current = pq.top().second;
+		int value = -pq.top().first;
+		pq.pop();
+		if (visited[current] == false) {
+			visited[current] = true;
+			for (int i = 0; i < v[current].size(); i++) {
+				if (dis[v[current][i].first] > value + v[current][i].second) {
+					dis[v[current][i].first] = value + v[current][i].second;
+					pq.push(make_pair(-dis[v[current][i].first], v[current][i].first));
+				}
+			}
+		}
+		
+	}
+}
+int main(void) {
+	
+	cin >> V;
+	cin >> E;
+
+	cin >> K; //출발점
+    for (int i = 0; i < E; i++) {
+		cin >> from >> to >> w;
+		v[from].push_back(make_pair(to, w));
+	}
+	for (int i = 1; i <= V; i++) {
+		dis[i] = INF;
+	}
+	dijkstra();
+	for (int i = 1; i <= V; i++) {
+		if (dis[i] == INF) cout << "INF\n";
+		else cout << dis[i] << "\n";
+	}
+}
+```
