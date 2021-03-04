@@ -138,7 +138,7 @@ int main(void) {
 	for (int i = 1; i <= V; i++) {
 		dis[i] = INF;
 	}
-	dijkstra();
+	dijkstra(); // dig 
 	for (int i = 1; i <= V; i++) {
 		if (dis[i] == INF) cout << "INF\n";
 		else cout << dis[i] << "\n";
