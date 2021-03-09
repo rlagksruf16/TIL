@@ -12,7 +12,8 @@
 
 ### 음의 사이클
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8c57fd7b-3a2d-4859-8b2a-1ee6d27f6739/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8c57fd7b-3a2d-4859-8b2a-1ee6d27f6739/Untitled.png)
+![Bellman](./Algorithm/bellman1.png)
+
 
 1. s → a→ b →g 의 경우 
     - 일반적인 경로 → 문제 발생하지 않는다
@@ -29,7 +30,7 @@ Ex) 3개의 노드인 경우 최대 2개의 간선까지만 허용 → 순환 �
 
 ### Relaxtion
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e062602a-db70-4fc1-b71b-f7ad807781ce/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e062602a-db70-4fc1-b71b-f7ad807781ce/Untitled.png)
+![Bellman](./Algorithm/bellman2.png) ![Bellman](./Algorithm/bellman3.png)
 
 최단 경로문제에서 s → t →y → x → z경로나 s → t →x , s → y → z 의 경로의 결과는 동일함
 
