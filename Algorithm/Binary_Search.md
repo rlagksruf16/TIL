@@ -57,6 +57,34 @@ k = logN
 
 결론적으로 시간복잡도는 **logN** 이다.
 
+
+### Binary Search 문제(leetcode 35)
+https://leetcode.com/problems/search-insert-position/
+-> 심플한 Binary Search 문제(Easy)
+
+
+```jsx
+var searchInsert = function(nums, target) {
+    let left = 0;
+    let right = nums.length-1;
+    if(target === 0)
+        return 0;
+    
+    while(left <= right) {
+        let mid = Math.floor((left+right) / 2);
+        
+        if(nums[mid] === target)
+            return mid;
+        else if(nums[mid] < target)
+            left = mid+1;
+        else
+            right = mid-1;
+    }
+    return right+1;
+};
+```
+
+
 ### Binary Search 문제 모음
 
 [Binary Search - LeetCode](https://leetcode.com/tag/binary-search/)
