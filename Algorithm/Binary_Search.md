@@ -71,7 +71,7 @@ var searchInsert = function(nums, target) {
         return 0;
     
     while(left <= right) {
-        let mid = Math.floor((left+right) / 2);
+        let mid = Math.floor((left+right) / 2); // floor 필수
         
         if(nums[mid] === target)
             return mid;
