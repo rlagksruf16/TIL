@@ -100,3 +100,4 @@ struct Trie {
 ---
 
 [[자료구조] 트라이 (Trie) C++ 구현](https://eun-jeong.tistory.com/29)
+[tistory 블로그](https://jason9319.tistory.com/129)
